@@ -1,0 +1,160 @@
+@import "bourbon/bourbon"
+
+$animation-background: rgb(61, 163, 220)
+
+$pointsInLine: 24
+$pointsInColumn1: 2
+$pointsInColumn2: 5
+$pointsInColumn3: 4
+
+$pointSize: 8px
+
+html
+    width: 100%
+    height: 100%
+    body
+        width: 100%
+        height: 100%
+        #animation-wrapper
+            position: relative
+            width: 100%
+            height: 100%
+            background: $animation-background
+            .animation-navigator
+                position: absolute
+                top: 50%
+                z-index: 10
+                color: rgba(255, 255, 255, 0.9)
+                @include transform(translate3d(0, -50%, 0))
+                @include transition(opacity 0.4s ease-out)
+                opacity: 1
+                &#previous-slide
+                    left: 10px
+                &#next-slide
+                    right: 10px
+                &.unvisible
+                    opacity: 0
+            #animation-container
+                position: relative
+                width: 1000px
+                // width: 1200px
+                height: auto
+                margin: 0 auto
+                background: $animation-background
+                .animation-element,
+                .animation-screen,
+                .animation-silhouette,
+                .animation-text,
+                .animation-table,
+                #animation-points
+                    position: absolute
+                    top: 0
+                    left: 0
+                    height: auto
+                #animation-elements-laptop
+                    width: 43.6%
+                #animation-elements-tablet
+                    width: 16.67%
+                #animation-elements-smartphone
+                    width: 5.92%
+                #animation-texts-1-first-line
+                    width: 25.83%
+                #animation-texts-1-second-line
+                    width: 28.42%
+                #animation-texts-1-third-line
+                    width: 33.58%
+                #animation-screens-laptop,
+                #animation-screens-laptop-2,
+                #animation-screens-laptop-graph
+                    width: 25.25%
+                #animation-screens-laptop-graph
+                    // height: 191px
+                #animation-screens-tablet
+                    width: 13%
+                #animation-screens-smartphone
+                    width: 5.08%
+                #animation-silhouettes-first
+                    width: 6.83%
+                #animation-silhouettes-second
+                    width: 5.5%
+                #animation-silhouettes-third
+                    width: 19.5%
+                #animation-table-first
+                    width: 15.5%
+                #animation-table-second
+                    width: 21.75%
+                #animation-table-third
+                    width: 36.42%
+                #animation-app-first
+                    width: 3.08%
+                #animation-app-second
+                    width: 4.33%
+                #animation-app-third
+                    width: 6.5%
+                #animation-points
+                    width: 30.41%
+                    height: 17.67%
+                    text-align: center
+                    .point
+                        position: absolute
+                        top: 0
+                        left: 0
+                        width: $pointSize
+                        height: $pointSize
+                        border-radius: 50%
+                        border: 1px solid white
+                        background-color: transparent
+                        @include transition(opacity 0.3s ease)
+                        .point-background
+                            position: absolute
+                            width: 100%
+                            height: 100%
+                            top: 0
+                            left: 0
+                            border-radius: 50%
+                            background-color: white
+                            @include transform(matrix(1, 0, 0, 0, 0, 0))
+                            @include transform-origin(50% 50%)
+                        &:focus,
+                        &:hover
+                            opacity: 0.7
+                        &.current
+                            .point-background
+                                @include transform(scale(1))
+                        @for $i from 1 to $pointsInLine + 1
+                            &:nth-child(#{$i})
+                                left: ($i - (($pointsInLine + 1 - $i) / $pointsInLine)) * 100% / $pointsInLine
+                    #animation-points-table-1,
+                    #animation-points-table-2,
+                    #animation-points-table-3
+                        position: absolute
+                        top: 0
+                        width: $pointSize
+                        height: 100%
+                    #animation-points-table-1
+                        left: 69.25%
+                        .point
+                            left: 0
+                            @for $i from 1 to $pointsInColumn1 + 1
+                                &:nth-child(#{$i})
+                                    top: (($i * 100%) / 6)
+                    #animation-points-table-2
+                        left: 34.85%
+                        .point
+                            left: 0
+                            @for $i from 1 to $pointsInColumn2 + 1
+                                &:nth-child(#{$i})
+                                    top: (($i * 100%) / 6)
+                    #animation-points-table-3
+                        left: 99.75%
+                        .point
+                            left: 0
+                            @for $i from 1 to $pointsInColumn3 + 1
+                                &:nth-child(#{$i})
+                                    top: (($i * 100%) / 6)
+                #animation-texts-3-first-line
+                    width: 60.42%
+                #animation-texts-3-second-line
+                    width: 45.25%
+                #animation-texts-3-third-line
+                    width: 48.33%

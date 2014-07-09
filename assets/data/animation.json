@@ -1,0 +1,108 @@
+{
+    "tweens": {
+        "laptop-first": {
+            "target": __elements["laptop"]
+            "duration": 0.6
+            "to": {
+                "x": __positions["laptop"].x * width
+                "y": __positions["laptop"].y * height
+                "scale": 0.3
+            }
+        }
+        "laptop-second": {
+            "target": __elements["laptop"]
+            "duration": 0.6
+            "to": {
+                "x": __positions["laptop"].x * width
+                "y": __positions["laptop"].y * height
+                "scale": 1
+            }
+        }
+        "screen-laptop-first": {
+            "target": __elements["screen-laptop"]
+            "duration": 0.6
+            "to": {
+                "x": __positions["screen-laptop"].x * width
+                "y": __positions["screen-laptop"].y * height
+                "alpha": 0
+            }
+        }
+        "screen-laptop-second": {
+            "target": __elements["screen-laptop"]
+            "duration": 0.6
+            "to": {
+                "x": __positions["screen-laptop"].x * width
+                "y": __positions["screen-laptop"].y * height
+                "alpha": 1
+            }
+        }
+        "tablet": {
+            "target": __elements["tablet"]
+            "duration": 0.6
+            "from": {
+                "x": __positions["tablet"].x * width
+                "y": __positions["tablet"].y * height
+                "scale": 0.3
+            }
+            "to": {
+                "x": __positions["tablet"].x * width
+                "y": __positions["tablet"].y * height
+                "scale": 1
+            }
+        }
+        "screen-tablet": {
+            "target": __elements["screen-tablet"]
+            "duration": 0.6
+            "from": {
+                "x": __positions["screen-tablet"].x * width
+                "y": __positions["screen-tablet"].y * height
+                "alpha": 0
+            }
+            "to": {
+                "x": __positions["screen-tablet"].x * width
+                "y": __positions["screen-tablet"].y * height
+                "alpha": 1
+            }
+        }
+        "smartphone": {
+            "target": __elements["smartphone"]
+            "duration": 0.6
+            "from": {
+                "x": __positions["smartphone"].x * width
+                "y": __positions["smartphone"].y * height
+                "scale": 0.3
+            }
+            "to": {
+                "x": __positions["smartphone"].x * width
+                "y": __positions["smartphone"].y * height
+                "scale": 1
+            }
+        }
+        "screen-smartphone": {
+            "target": __elements["screen-smartphone"]
+            "duration": 0.6
+            "from": {
+                "x": __positions["screen-smartphone"].x * width
+                "y": __positions["screen-smartphone"].y * height
+                "alpha": 0
+            }
+            "to": {
+                "x": __positions["screen-smartphone"].x * width
+                "y": __positions["screen-smartphone"].y * height
+                "alpha": 1
+            }
+        }
+        "text-from-right": {
+            "target": __elements["text-1"]
+            "duration": 0.8
+            "from": {
+                "x": __elements["text-1"].width() + width
+                "y": __positions["text-1"].y * height
+            }
+            "to": {
+                "x": __positions["text-1"].x * width
+                "y": __positions["text-1"].y * height
+            }
+        }
+    }
+}

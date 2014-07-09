@@ -14,6 +14,11 @@ var gulp         = require('gulp'),
     minifycss    = require('gulp-minify-css'),
     csso         = require('gulp-csso'),
     autoprefixer = require('gulp-autoprefixer'),
+    // Scripts [coffee, js]
+    coffee       = require('gulp-coffee'),
+    coffeelint   = require('gulp-coffeelint'),
+    uglify       = require('gulp-uglify'),
+    concat       = require('gulp-concat'),
     __ports      = {
         server:     1338,
         livereload: 35732
@@ -21,7 +26,7 @@ var gulp         = require('gulp'),
 
 // Styles
 gulp.task('styles', function () {
-    return gulp.src(['sass/{,*/}*.scss', '!sass/{,*/}*_*.scss', '!sass/bourbon/*.scss'])
+    return gulp.src(['sass/{,*/}*.{scss,sass}', '!sass/{,*/}*_*.{scss,sass}', '!sass/bourbon/*.{scss,sass}'])
         .pipe(sass({
             style: 'expanded',
             quiet: true,
@@ -41,6 +46,40 @@ gulp.task('styles', function () {
         .pipe(livereload(server))
         .pipe(notify({
             message: 'Styles task completed @ <%= options.date %>',
+            templateOptions: {
+                date: new Date()
+            }
+        }));
+});
+
+
+// Scripts
+gulp.task('scripts', function () {
+    return gulp.src(['coffee/{,*/}*.coffee'])
+        .pipe(coffee({
+            bare: true
+        }))
+        .on('error', gutil.log)
+        .pipe(coffeelint())
+        .on('error', gutil.log)
+        .pipe(coffeelint.reporter())
+        .on('error', gutil.log)
+        .pipe(size())
+        .pipe(concat('app.js'))
+        .on('error', gutil.log)
+        .pipe(gulp.dest('js'))
+        .pipe(uglify())
+        .on('error', gutil.log)
+        .pipe(rename({
+            suffix: '.min'
+        }))
+        .pipe(size())
+        .pipe(concat('app.min.js'))
+        .on('error', gutil.log)
+        .pipe(gulp.dest('js'))
+        .pipe(livereload(server))
+        .pipe(notify({
+            message: 'Scripts task completed @ <%= options.date %>',
             templateOptions: {
                 date: new Date()
             }
@@ -67,11 +106,14 @@ gulp.task('watch', function () {
         gulp.watch('gulpfile.js', ['assets']);
 
         // Watch .scss files
-        gulp.watch('sass/{,*/}*.scss', ['styles']);
+        gulp.watch('sass/{,*/}*.{scss,sass}', ['styles']);
+
+        // Watch .coffee files
+        gulp.watch('coffee/{,*/}*.coffee', ['scripts']);
     });
 });
 
-gulp.task('assets', ['styles']);
+gulp.task('assets', ['styles', 'scripts']);
 
 gulp.task('serve', ['assets'], function () {
     gulp.start('connect', 'watch');
