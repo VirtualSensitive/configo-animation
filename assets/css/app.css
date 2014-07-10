@@ -93,9 +93,12 @@ html body #animation-wrapper #animation-container #animation-texts-1-third-line 
   width: 33.58%;
 }
 html body #animation-wrapper #animation-container #animation-screens-laptop,
-html body #animation-wrapper #animation-container #animation-screens-laptop-2,
-html body #animation-wrapper #animation-container #animation-screens-laptop-graph {
+html body #animation-wrapper #animation-container #animation-screens-laptop-2 {
   width: 25.25%;
+}
+html body #animation-wrapper #animation-container #animation-screens-laptop-graph {
+  width: 19.25%;
+  margin: 2% 3%;
 }
 html body #animation-wrapper #animation-container #animation-screens-tablet {
   width: 13%;
@@ -254,7 +257,7 @@ html body #animation-wrapper #animation-container #animation-points #animation-p
 html body #animation-wrapper #animation-container #animation-points #animation-points-table-3 {
   position: absolute;
   top: 0;
-  width: 9px;
+  width: 8px;
   height: 100%;
 }
 html body #animation-wrapper #animation-container #animation-points #animation-points-table-1 {

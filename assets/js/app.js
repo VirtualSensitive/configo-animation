@@ -1,4 +1,4 @@
-$(function() {
+(function($) {
   var height, offsetTop, width, windowWidth, __appFirstRotationTimeline, __appSecondRotationTimeline, __appThirdRotationTimeline, __appTimeline, __elements, __label, __positions, __ratios, __timeline, __tweens;
   $.fn.reverse = [].reverse;
   __elements = {
@@ -424,7 +424,7 @@ $(function() {
       'target': __elements['screen-laptop'],
       'duration': 0.4,
       'to': {
-        'delay': 1,
+        'delay': 3,
         'alpha': 0
       }
     },
@@ -513,7 +513,7 @@ $(function() {
       'duration': 0.6,
       'to': {
         'scale': 1,
-        'ease': Bounce.easeOut
+        'ease': gs.Bounce.easeOut
       }
     },
     'app-second-second': {
@@ -521,7 +521,7 @@ $(function() {
       'duration': 0.6,
       'to': {
         'scale': 1,
-        'ease': Bounce.easeOut
+        'ease': gs.Bounce.easeOut
       }
     },
     'app-third-second': {
@@ -529,7 +529,7 @@ $(function() {
       'duration': 0.6,
       'to': {
         'scale': 1,
-        'ease': Bounce.easeOut
+        'ease': gs.Bounce.easeOut
       }
     },
     'silhouettes-first-second': {
@@ -607,7 +607,7 @@ $(function() {
       'to': {
         'rotationY': 45,
         'y': __positions['app-first'].y * height,
-        'ease': Ease.linear
+        'ease': gs.Ease.linear
       }
     },
     'app-first-fourth': {
@@ -616,7 +616,7 @@ $(function() {
       'to': {
         'rotationY': -45,
         'y': __positions['app-first'].y * height - 10,
-        'ease': Ease.linear
+        'ease': gs.Ease.linear
       }
     },
     'app-first-fifth': {
@@ -625,7 +625,7 @@ $(function() {
       'to': {
         'rotationY': 0,
         'y': __positions['app-first'].y * height,
-        'ease': Ease.linear
+        'ease': gs.Ease.linear
       }
     },
     'app-second-third': {
@@ -634,7 +634,7 @@ $(function() {
       'to': {
         'rotationY': 45,
         'y': __positions['app-second'].y * height,
-        'ease': Ease.linear
+        'ease': gs.Ease.linear
       }
     },
     'app-second-fourth': {
@@ -643,7 +643,7 @@ $(function() {
       'to': {
         'rotationY': -45,
         'y': __positions['app-second'].y * height - 10,
-        'ease': Ease.linear
+        'ease': gs.Ease.linear
       }
     },
     'app-second-fifth': {
@@ -652,7 +652,7 @@ $(function() {
       'to': {
         'rotationY': 0,
         'y': __positions['app-second'].y * height,
-        'ease': Ease.linear
+        'ease': gs.Ease.linear
       }
     },
     'app-third-third': {
@@ -661,7 +661,7 @@ $(function() {
       'to': {
         'rotationY': 45,
         'y': __positions['app-third'].y * height,
-        'ease': Ease.linear
+        'ease': gs.Ease.linear
       }
     },
     'app-third-fourth': {
@@ -670,7 +670,7 @@ $(function() {
       'to': {
         'rotationY': -45,
         'y': __positions['app-third'].y * height - 10,
-        'ease': Ease.linear
+        'ease': gs.Ease.linear
       }
     },
     'app-third-fifth': {
@@ -679,7 +679,7 @@ $(function() {
       'to': {
         'rotationY': 0,
         'y': __positions['app-third'].y * height,
-        'ease': Ease.linear
+        'ease': gs.Ease.linear
       }
     },
     'app-first-points-first': {
@@ -742,202 +742,40 @@ $(function() {
         'delay': 2.9,
         'alpha': 1
       }
-    },
-    'screen-laptop-graph-third': {
-      'target': __elements['screen-laptop-graph'],
-      'duration': 0.6,
-      'to': {
-        'alpha': 0
-      }
-    },
-    'screen-tablet-third': {
-      'target': __elements['screen-tablet'],
-      'duration': 0.6,
-      'to': {
-        'alpha': 0
-      }
-    },
-    'screen-smartphone-third': {
-      'target': __elements['screen-smartphone'],
-      'duration': 0.6,
-      'to': {
-        'alpha': 0
-      }
-    },
-    'text-3-first-line-from-right-third': {
-      'target': __elements['text-3-first-line'],
-      'duration': 0.4,
-      'to': {
-        'x': __elements['text-3-first-line'].width() + windowWidth,
-        'y': __positions['text-3-first-line'].y * height
-      }
-    },
-    'text-3-second-line-from-right-third': {
-      'target': __elements['text-3-second-line'],
-      'duration': 0.4,
-      'to': {
-        'x': __elements['text-3-second-line'].width() + windowWidth,
-        'y': __positions['text-3-second-line'].y * height
-      }
-    },
-    'text-3-third-line-from-right-third': {
-      'target': __elements['text-3-third-line'],
-      'duration': 0.4,
-      'to': {
-        'x': __elements['text-3-third-line'].width() + windowWidth,
-        'y': __positions['text-3-third-line'].y * height
-      }
-    },
-    'silhouettes-first-third': {
-      'target': __elements['silhouettes-first'],
-      'duration': 0.4,
-      'to': {
-        'x': __positions['silhouettes-first'].x * width + windowWidth,
-        'y': __positions['silhouettes-first'].y * height
-      }
-    },
-    'silhouettes-second-third': {
-      'target': __elements['silhouettes-second'],
-      'duration': 0.4,
-      'to': {
-        'x': __positions['silhouettes-second'].x * width + windowWidth,
-        'y': __positions['silhouettes-second'].y * height
-      }
-    },
-    'silhouettes-third-third': {
-      'target': __elements['silhouettes-third'],
-      'duration': 0.4,
-      'to': {
-        'x': __positions['silhouettes-third'].x * width + windowWidth,
-        'y': __positions['silhouettes-third'].y * height
-      }
-    },
-    'horizontal-points-third': {
-      'target': __elements['horizontal-points'],
-      'duration': 0.1,
-      'to': {
-        'scale': 0
-      }
-    },
-    'table-first-points-third': {
-      'target': __elements['table-first-points'],
-      'duration': 0.3,
-      'to': {
-        'scale': 0
-      }
-    },
-    'table-second-points-third': {
-      'target': __elements['table-second-points'],
-      'duration': 0.3,
-      'to': {
-        'scale': 0
-      }
-    },
-    'table-third-points-third': {
-      'target': __elements['table-third-points'],
-      'duration': 0.3,
-      'to': {
-        'scale': 0
-      }
-    },
-    'app-first-sixth': {
-      'target': __elements['app-first'],
-      'duration': 0.6,
-      'to': {
-        'scale': 0
-      }
-    },
-    'app-second-sixth': {
-      'target': __elements['app-second'],
-      'duration': 0.6,
-      'to': {
-        'scale': 0
-      }
-    },
-    'app-third-sixth': {
-      'target': __elements['app-third'],
-      'duration': 0.6,
-      'to': {
-        'scale': 0
-      }
-    },
-    'table-first-third': {
-      'target': __elements['table-first'],
-      'duration': 0.4,
-      'to': {
-        'scale': 0,
-        'alpha': 0
-      }
-    },
-    'table-second-third': {
-      'target': __elements['table-second'],
-      'duration': 0.4,
-      'to': {
-        'scale': 0,
-        'alpha': 0
-      }
-    },
-    'table-third-third': {
-      'target': __elements['table-third'],
-      'duration': 0.4,
-      'to': {
-        'scale': 0,
-        'alpha': 0
-      }
-    },
-    'laptop-third': {
-      'target': __elements['laptop'],
-      'duration': 0.6,
-      'to': {
-        'scale': 0
-      }
-    },
-    'tablet-third': {
-      'target': __elements['tablet'],
-      'duration': 0.6,
-      'to': {
-        'scale': 0
-      }
-    },
-    'smartphone-third': {
-      'target': __elements['smartphone'],
-      'duration': 0.6,
-      'to': {
-        'scale': 0
-      }
     }
   };
-  __appFirstRotationTimeline = new TimelineMax({
+  __appFirstRotationTimeline = new gs.TimelineMax({
     'repeat': 2,
     'repeatDelay': 0
   });
-  __appFirstRotationTimeline.append(TweenMax.to(__tweens['app-first-third'].target, __tweens['app-first-third'].duration, __tweens['app-first-third'].to)).append(TweenMax.to(__tweens['app-first-fourth'].target, __tweens['app-first-fourth'].duration, __tweens['app-first-fourth'].to)).append(TweenMax.to(__tweens['app-first-fifth'].target, __tweens['app-first-fifth'].duration, __tweens['app-first-fifth'].to));
-  __appSecondRotationTimeline = new TimelineMax({
+  __appFirstRotationTimeline.append(gs.TweenMax.to(__tweens['app-first-third'].target, __tweens['app-first-third'].duration, __tweens['app-first-third'].to)).append(gs.TweenMax.to(__tweens['app-first-fourth'].target, __tweens['app-first-fourth'].duration, __tweens['app-first-fourth'].to)).append(gs.TweenMax.to(__tweens['app-first-fifth'].target, __tweens['app-first-fifth'].duration, __tweens['app-first-fifth'].to));
+  __appSecondRotationTimeline = new gs.TimelineMax({
     'repeat': 2,
     'repeatDelay': 0
   });
-  __appSecondRotationTimeline.append(TweenMax.to(__tweens['app-second-third'].target, __tweens['app-second-third'].duration, __tweens['app-second-third'].to)).append(TweenMax.to(__tweens['app-second-fourth'].target, __tweens['app-second-fourth'].duration, __tweens['app-second-fourth'].to)).append(TweenMax.to(__tweens['app-second-fifth'].target, __tweens['app-second-fifth'].duration, __tweens['app-second-fifth'].to));
-  __appThirdRotationTimeline = new TimelineMax({
+  __appSecondRotationTimeline.append(gs.TweenMax.to(__tweens['app-second-third'].target, __tweens['app-second-third'].duration, __tweens['app-second-third'].to)).append(gs.TweenMax.to(__tweens['app-second-fourth'].target, __tweens['app-second-fourth'].duration, __tweens['app-second-fourth'].to)).append(gs.TweenMax.to(__tweens['app-second-fifth'].target, __tweens['app-second-fifth'].duration, __tweens['app-second-fifth'].to));
+  __appThirdRotationTimeline = new gs.TimelineMax({
     'repeat': 2,
     'repeatDelay': 0
   });
-  __appThirdRotationTimeline.append(TweenMax.to(__tweens['app-third-third'].target, __tweens['app-third-third'].duration, __tweens['app-third-third'].to)).append(TweenMax.to(__tweens['app-third-fourth'].target, __tweens['app-third-fourth'].duration, __tweens['app-third-fourth'].to)).append(TweenMax.to(__tweens['app-third-fifth'].target, __tweens['app-third-fifth'].duration, __tweens['app-third-fifth'].to));
-  __appTimeline = new TimelineMax({
-    'repeat': 1
+  __appThirdRotationTimeline.append(gs.TweenMax.to(__tweens['app-third-third'].target, __tweens['app-third-third'].duration, __tweens['app-third-third'].to)).append(gs.TweenMax.to(__tweens['app-third-fourth'].target, __tweens['app-third-fourth'].duration, __tweens['app-third-fourth'].to)).append(gs.TweenMax.to(__tweens['app-third-fifth'].target, __tweens['app-third-fifth'].duration, __tweens['app-third-fifth'].to));
+  __appTimeline = new gs.TimelineMax({
+    'repeat': -1
   });
-  __appTimeline.append(__appFirstRotationTimeline).appendMultiple([TweenMax.staggerTo(__tweens['app-first-points-first'].target, __tweens['app-first-points-first'].duration, __tweens['app-first-points-first'].to, 0.1), TweenMax.staggerTo(__tweens['app-first-points-second'].target, __tweens['app-first-points-second'].duration, __tweens['app-first-points-second'].to, 0.1)]).append(__appSecondRotationTimeline).appendMultiple([TweenMax.staggerTo(__tweens['app-second-points-first'].target, __tweens['app-second-points-first'].duration, __tweens['app-second-points-first'].to, 0.1), TweenMax.staggerTo(__tweens['app-second-points-second'].target, __tweens['app-second-points-second'].duration, __tweens['app-second-points-second'].to, 0.1)]).append(__appThirdRotationTimeline).appendMultiple([TweenMax.staggerTo(__tweens['app-third-points-first'].target, __tweens['app-third-points-first'].duration, __tweens['app-third-points-first'].to, 0.1), TweenMax.staggerTo(__tweens['app-third-points-second'].target, __tweens['app-third-points-second'].duration, __tweens['app-third-points-second'].to, 0.1)]);
+  __appTimeline.append(__appFirstRotationTimeline).appendMultiple([gs.TweenMax.staggerTo(__tweens['app-first-points-first'].target, __tweens['app-first-points-first'].duration, __tweens['app-first-points-first'].to, 0.1), gs.TweenMax.staggerTo(__tweens['app-first-points-second'].target, __tweens['app-first-points-second'].duration, __tweens['app-first-points-second'].to, 0.1)]).append(__appSecondRotationTimeline).appendMultiple([gs.TweenMax.staggerTo(__tweens['app-second-points-first'].target, __tweens['app-second-points-first'].duration, __tweens['app-second-points-first'].to, 0.1), gs.TweenMax.staggerTo(__tweens['app-second-points-second'].target, __tweens['app-second-points-second'].duration, __tweens['app-second-points-second'].to, 0.1)]).append(__appThirdRotationTimeline).appendMultiple([gs.TweenMax.staggerTo(__tweens['app-third-points-first'].target, __tweens['app-third-points-first'].duration, __tweens['app-third-points-first'].to, 0.1), gs.TweenMax.staggerTo(__tweens['app-third-points-second'].target, __tweens['app-third-points-second'].duration, __tweens['app-third-points-second'].to, 0.1)]).addCallback(function() {
+    return $('#animation-play-overlay').addClass('active');
+  }, '+=0');
   __label = 1;
-  __timeline = new TimelineMax({
+  __timeline = new gs.TimelineMax({
     'repeat': 0,
     'paused': true,
     'yoyo': false
   });
-  __timeline.timeScale(1).appendMultiple([TweenMax.to(__tweens['screen-laptop-first'].target, __tweens['screen-laptop-first'].duration, __tweens['screen-laptop-first'].to), TweenMax.to(__tweens['screen-laptop-2-first'].target, __tweens['screen-laptop-2-first'].duration, __tweens['screen-laptop-2-first'].to), TweenMax.to(__tweens['screen-laptop-graph-first'].target, __tweens['screen-laptop-graph-first'].duration, __tweens['screen-laptop-graph-first'].to), TweenMax.to(__tweens['screen-tablet-first'].target, __tweens['screen-tablet-first'].duration, __tweens['screen-tablet-first'].to), TweenMax.to(__tweens['screen-smartphone-first'].target, __tweens['screen-smartphone-first'].duration, __tweens['screen-smartphone-first'].to), TweenMax.to(__tweens['text-1-first-line-from-right-first'].target, __tweens['text-1-first-line-from-right-first'].duration, __tweens['text-1-first-line-from-right-first'].to), TweenMax.to(__tweens['text-1-second-line-from-right-first'].target, __tweens['text-1-second-line-from-right-first'].duration, __tweens['text-1-second-line-from-right-first'].to), TweenMax.to(__tweens['text-1-third-line-from-right-first'].target, __tweens['text-1-third-line-from-right-first'].duration, __tweens['text-1-third-line-from-right-first'].to), TweenMax.to(__tweens['text-1-third-line-from-right-first'].target, __tweens['text-1-third-line-from-right-first'].duration, __tweens['text-1-third-line-from-right-first'].to), TweenMax.to(__tweens['table-first-first'].target, __tweens['table-first-first'].duration, __tweens['table-first-first'].to), TweenMax.to(__tweens['table-second-first'].target, __tweens['table-second-first'].duration, __tweens['table-second-first'].to), TweenMax.to(__tweens['table-third-first'].target, __tweens['table-third-first'].duration, __tweens['table-third-first'].to), TweenMax.to(__tweens['horizontal-points-first'].target, __tweens['horizontal-points-first'].duration, __tweens['horizontal-points-first'].to), TweenMax.to(__tweens['table-first-points-first'].target, __tweens['table-first-points-first'].duration, __tweens['table-first-points-first'].to), TweenMax.to(__tweens['table-second-points-first'].target, __tweens['table-second-points-first'].duration, __tweens['table-second-points-first'].to), TweenMax.to(__tweens['table-third-points-first'].target, __tweens['table-third-points-first'].duration, __tweens['table-third-points-first'].to), TweenMax.to(__tweens['app-first-first'].target, __tweens['app-first-first'].duration, __tweens['app-first-first'].to), TweenMax.to(__tweens['app-second-first'].target, __tweens['app-second-first'].duration, __tweens['app-second-first'].to), TweenMax.to(__tweens['app-third-first'].target, __tweens['app-third-first'].duration, __tweens['app-third-first'].to), TweenMax.to(__tweens['silhouettes-first-first'].target, __tweens['silhouettes-first-first'].duration, __tweens['silhouettes-first-first'].to), TweenMax.to(__tweens['silhouettes-second-first'].target, __tweens['silhouettes-second-first'].duration, __tweens['silhouettes-second-first'].to), TweenMax.to(__tweens['silhouettes-third-first'].target, __tweens['silhouettes-third-first'].duration, __tweens['silhouettes-third-first'].to), TweenMax.to(__tweens['text-3-first-line-from-right-first'].target, __tweens['text-3-first-line-from-right-first'].duration, __tweens['text-3-first-line-from-right-first'].to), TweenMax.to(__tweens['text-3-second-line-from-right-first'].target, __tweens['text-3-second-line-from-right-first'].duration, __tweens['text-3-second-line-from-right-first'].to), TweenMax.to(__tweens['text-3-third-line-from-right-first'].target, __tweens['text-3-third-line-from-right-first'].duration, __tweens['text-3-third-line-from-right-first'].to)]).appendMultiple([TweenMax.to(__tweens['laptop-first'].target, __tweens['laptop-first'].duration, __tweens['laptop-first'].to), TweenMax.to(__tweens['tablet-first'].target, __tweens['tablet-first'].duration, __tweens['tablet-first'].to), TweenMax.to(__tweens['smartphone-first'].target, __tweens['smartphone-first'].duration, __tweens['smartphone-first'].to)]).appendMultiple([TweenMax.to(__tweens['laptop-second'].target, __tweens['laptop-second'].duration, __tweens['laptop-second'].to), TweenMax.to(__tweens['tablet-second'].target, __tweens['tablet-second'].duration, __tweens['tablet-second'].to), TweenMax.to(__tweens['smartphone-second'].target, __tweens['smartphone-second'].duration, __tweens['smartphone-second'].to)]).appendMultiple([TweenMax.to(__tweens['screen-laptop-second'].target, __tweens['screen-laptop-second'].duration, __tweens['screen-laptop-second'].to), TweenMax.to(__tweens['screen-tablet-second'].target, __tweens['screen-tablet-second'].duration, __tweens['screen-tablet-second'].to), TweenMax.to(__tweens['screen-smartphone-second'].target, __tweens['screen-smartphone-second'].duration, __tweens['screen-smartphone-second'].to)]).append(TweenMax.to(__tweens['text-1-first-line-from-right-second'].target, __tweens['text-1-first-line-from-right-second'].duration, __tweens['text-1-first-line-from-right-second'].to)).append(TweenMax.to(__tweens['text-1-second-line-from-right-second'].target, __tweens['text-1-second-line-from-right-second'].duration, __tweens['text-1-second-line-from-right-second'].to)).append(TweenMax.to(__tweens['text-1-third-line-from-right-second'].target, __tweens['text-1-third-line-from-right-second'].duration, __tweens['text-1-third-line-from-right-second'].to)).append(TweenMax.to(__tweens['screen-laptop-third'].target, __tweens['screen-laptop-third'].duration, __tweens['screen-laptop-third'].to)).appendMultiple([TweenMax.to(__tweens['text-1-first-line-from-right-third'].target, __tweens['text-1-first-line-from-right-third'].duration, __tweens['text-1-first-line-from-right-third'].to), TweenMax.to(__tweens['text-1-second-line-from-right-third'].target, __tweens['text-1-second-line-from-right-third'].duration, __tweens['text-1-second-line-from-right-third'].to), TweenMax.to(__tweens['text-1-third-line-from-right-third'].target, __tweens['text-1-third-line-from-right-third'].duration, __tweens['text-1-third-line-from-right-third'].to)]).append(TweenMax.to(__tweens['screen-laptop-2-second'].target, __tweens['screen-laptop-2-second'].duration, __tweens['screen-laptop-2-second'].to)).append(TweenMax.to(__tweens['table-first-second'].target, __tweens['table-first-second'].duration, __tweens['table-first-second'].to)).append(TweenMax.to(__tweens['table-second-second'].target, __tweens['table-second-second'].duration, __tweens['table-second-second'].to)).append(TweenMax.to(__tweens['table-third-second'].target, __tweens['table-third-second'].duration, __tweens['table-third-second'].to)).append(TweenMax.staggerTo(__tweens['horizontal-points-second'].target, __tweens['horizontal-points-second'].duration, __tweens['horizontal-points-second'].to, 0.03)).append(TweenMax.staggerTo(__tweens['table-first-points-second'].target, __tweens['table-first-points-second'].duration, __tweens['table-first-points-second'].to, 0.03)).append(TweenMax.staggerTo(__tweens['table-second-points-second'].target, __tweens['table-second-points-second'].duration, __tweens['table-second-points-second'].to, 0.03)).append(TweenMax.staggerTo(__tweens['table-third-points-second'].target, __tweens['table-third-points-second'].duration, __tweens['table-third-points-second'].to, 0.03)).appendMultiple([TweenMax.to(__tweens['app-first-second'].target, __tweens['app-first-second'].duration, __tweens['app-first-second'].to), TweenMax.to(__tweens['app-second-second'].target, __tweens['app-second-second'].duration, __tweens['app-second-second'].to), TweenMax.to(__tweens['app-third-second'].target, __tweens['app-third-second'].duration, __tweens['app-third-second'].to)]).append(TweenMax.to(__tweens['silhouettes-first-second'].target, __tweens['silhouettes-first-second'].duration, __tweens['silhouettes-first-second'].to)).append(TweenMax.to(__tweens['silhouettes-second-second'].target, __tweens['silhouettes-second-second'].duration, __tweens['silhouettes-second-second'].to)).append(TweenMax.to(__tweens['silhouettes-third-second'].target, __tweens['silhouettes-third-second'].duration, __tweens['silhouettes-third-second'].to)).append(TweenMax.to(__tweens['text-3-first-line-from-right-second'].target, __tweens['text-3-first-line-from-right-second'].duration, __tweens['text-3-first-line-from-right-second'].to)).append(TweenMax.to(__tweens['text-3-second-line-from-right-second'].target, __tweens['text-3-second-line-from-right-second'].duration, __tweens['text-3-second-line-from-right-second'].to)).append(TweenMax.to(__tweens['text-3-third-line-from-right-second'].target, __tweens['text-3-third-line-from-right-second'].duration, __tweens['text-3-third-line-from-right-second'].to)).appendMultiple([__appTimeline, TweenMax.to(__tweens['screen-laptop-2-third'].target, __tweens['screen-laptop-2-third'].duration, __tweens['screen-laptop-2-third'].to), TweenMax.to(__tweens['screen-laptop-graph-second'].target, __tweens['screen-laptop-graph-second'].duration, __tweens['screen-laptop-graph-second'].to)]).addLabel('Slide-3').append(TweenMax.to(__tweens['text-3-first-line-from-right-third'].target, __tweens['text-3-first-line-from-right-third'].duration, __tweens['text-3-first-line-from-right-third'].to)).append(TweenMax.to(__tweens['text-3-second-line-from-right-third'].target, __tweens['text-3-second-line-from-right-third'].duration, __tweens['text-3-second-line-from-right-third'].to)).append(TweenMax.to(__tweens['text-3-third-line-from-right-third'].target, __tweens['text-3-third-line-from-right-third'].duration, __tweens['text-3-third-line-from-right-third'].to)).appendMultiple([TweenMax.to(__tweens['screen-laptop-graph-third'].target, __tweens['screen-laptop-graph-third'].duration, __tweens['screen-laptop-graph-third'].to), TweenMax.to(__tweens['screen-tablet-third'].target, __tweens['screen-tablet-third'].duration, __tweens['screen-tablet-third'].to), TweenMax.to(__tweens['screen-smartphone-third'].target, __tweens['screen-smartphone-third'].duration, __tweens['screen-smartphone-third'].to)]).append(TweenMax.to(__tweens['silhouettes-first-third'].target, __tweens['silhouettes-first-third'].duration, __tweens['silhouettes-first-third'].to)).append(TweenMax.to(__tweens['silhouettes-second-third'].target, __tweens['silhouettes-second-third'].duration, __tweens['silhouettes-second-third'].to)).append(TweenMax.to(__tweens['silhouettes-third-third'].target, __tweens['silhouettes-third-third'].duration, __tweens['silhouettes-third-third'].to)).append(TweenMax.staggerTo(__tweens['horizontal-points-third'].target, __tweens['horizontal-points-third'].duration, __tweens['horizontal-points-third'].to, 0.03)).append(TweenMax.staggerTo(__tweens['table-first-points-third'].target, __tweens['table-first-points-third'].duration, __tweens['table-first-points-third'].to, 0.03)).append(TweenMax.staggerTo(__tweens['table-second-points-third'].target, __tweens['table-second-points-third'].duration, __tweens['table-second-points-third'].to, 0.03)).append(TweenMax.staggerTo(__tweens['table-third-points-third'].target, __tweens['table-third-points-third'].duration, __tweens['table-third-points-third'].to, 0.03)).append(TweenMax.to(__tweens['table-first-third'].target, __tweens['table-first-third'].duration, __tweens['table-first-third'].to)).append(TweenMax.to(__tweens['table-second-third'].target, __tweens['table-second-third'].duration, __tweens['table-second-third'].to)).append(TweenMax.to(__tweens['table-third-third'].target, __tweens['table-third-third'].duration, __tweens['table-third-third'].to)).appendMultiple([TweenMax.to(__tweens['app-first-sixth'].target, __tweens['app-first-sixth'].duration, __tweens['app-first-sixth'].to), TweenMax.to(__tweens['app-second-sixth'].target, __tweens['app-second-sixth'].duration, __tweens['app-second-sixth'].to), TweenMax.to(__tweens['app-third-sixth'].target, __tweens['app-third-sixth'].duration, __tweens['app-third-sixth'].to)]).appendMultiple([TweenMax.to(__tweens['laptop-third'].target, __tweens['laptop-third'].duration, __tweens['laptop-third'].to), TweenMax.to(__tweens['tablet-third'].target, __tweens['tablet-third'].duration, __tweens['tablet-third'].to), TweenMax.to(__tweens['smartphone-third'].target, __tweens['smartphone-third'].duration, __tweens['smartphone-third'].to)]).addCallback(function() {
-    return $('#animation-play-overlay').addClass('active');
-  }, '+=0');
+  __timeline.timeScale(1).appendMultiple([gs.TweenMax.to(__tweens['screen-laptop-first'].target, __tweens['screen-laptop-first'].duration, __tweens['screen-laptop-first'].to), gs.TweenMax.to(__tweens['screen-laptop-2-first'].target, __tweens['screen-laptop-2-first'].duration, __tweens['screen-laptop-2-first'].to), gs.TweenMax.to(__tweens['screen-laptop-graph-first'].target, __tweens['screen-laptop-graph-first'].duration, __tweens['screen-laptop-graph-first'].to), gs.TweenMax.to(__tweens['screen-tablet-first'].target, __tweens['screen-tablet-first'].duration, __tweens['screen-tablet-first'].to), gs.TweenMax.to(__tweens['screen-smartphone-first'].target, __tweens['screen-smartphone-first'].duration, __tweens['screen-smartphone-first'].to), gs.TweenMax.to(__tweens['text-1-first-line-from-right-first'].target, __tweens['text-1-first-line-from-right-first'].duration, __tweens['text-1-first-line-from-right-first'].to), gs.TweenMax.to(__tweens['text-1-second-line-from-right-first'].target, __tweens['text-1-second-line-from-right-first'].duration, __tweens['text-1-second-line-from-right-first'].to), gs.TweenMax.to(__tweens['text-1-third-line-from-right-first'].target, __tweens['text-1-third-line-from-right-first'].duration, __tweens['text-1-third-line-from-right-first'].to), gs.TweenMax.to(__tweens['text-1-third-line-from-right-first'].target, __tweens['text-1-third-line-from-right-first'].duration, __tweens['text-1-third-line-from-right-first'].to), gs.TweenMax.to(__tweens['table-first-first'].target, __tweens['table-first-first'].duration, __tweens['table-first-first'].to), gs.TweenMax.to(__tweens['table-second-first'].target, __tweens['table-second-first'].duration, __tweens['table-second-first'].to), gs.TweenMax.to(__tweens['table-third-first'].target, __tweens['table-third-first'].duration, __tweens['table-third-first'].to), gs.TweenMax.to(__tweens['horizontal-points-first'].target, __tweens['horizontal-points-first'].duration, __tweens['horizontal-points-first'].to), gs.TweenMax.to(__tweens['table-first-points-first'].target, __tweens['table-first-points-first'].duration, __tweens['table-first-points-first'].to), gs.TweenMax.to(__tweens['table-second-points-first'].target, __tweens['table-second-points-first'].duration, __tweens['table-second-points-first'].to), gs.TweenMax.to(__tweens['table-third-points-first'].target, __tweens['table-third-points-first'].duration, __tweens['table-third-points-first'].to), gs.TweenMax.to(__tweens['app-first-first'].target, __tweens['app-first-first'].duration, __tweens['app-first-first'].to), gs.TweenMax.to(__tweens['app-second-first'].target, __tweens['app-second-first'].duration, __tweens['app-second-first'].to), gs.TweenMax.to(__tweens['app-third-first'].target, __tweens['app-third-first'].duration, __tweens['app-third-first'].to), gs.TweenMax.to(__tweens['silhouettes-first-first'].target, __tweens['silhouettes-first-first'].duration, __tweens['silhouettes-first-first'].to), gs.TweenMax.to(__tweens['silhouettes-second-first'].target, __tweens['silhouettes-second-first'].duration, __tweens['silhouettes-second-first'].to), gs.TweenMax.to(__tweens['silhouettes-third-first'].target, __tweens['silhouettes-third-first'].duration, __tweens['silhouettes-third-first'].to), gs.TweenMax.to(__tweens['text-3-first-line-from-right-first'].target, __tweens['text-3-first-line-from-right-first'].duration, __tweens['text-3-first-line-from-right-first'].to), gs.TweenMax.to(__tweens['text-3-second-line-from-right-first'].target, __tweens['text-3-second-line-from-right-first'].duration, __tweens['text-3-second-line-from-right-first'].to), gs.TweenMax.to(__tweens['text-3-third-line-from-right-first'].target, __tweens['text-3-third-line-from-right-first'].duration, __tweens['text-3-third-line-from-right-first'].to)]).appendMultiple([gs.TweenMax.to(__tweens['laptop-first'].target, __tweens['laptop-first'].duration, __tweens['laptop-first'].to), gs.TweenMax.to(__tweens['tablet-first'].target, __tweens['tablet-first'].duration, __tweens['tablet-first'].to), gs.TweenMax.to(__tweens['smartphone-first'].target, __tweens['smartphone-first'].duration, __tweens['smartphone-first'].to)]).appendMultiple([gs.TweenMax.to(__tweens['laptop-second'].target, __tweens['laptop-second'].duration, __tweens['laptop-second'].to), gs.TweenMax.to(__tweens['tablet-second'].target, __tweens['tablet-second'].duration, __tweens['tablet-second'].to), gs.TweenMax.to(__tweens['smartphone-second'].target, __tweens['smartphone-second'].duration, __tweens['smartphone-second'].to)]).appendMultiple([gs.TweenMax.to(__tweens['screen-laptop-second'].target, __tweens['screen-laptop-second'].duration, __tweens['screen-laptop-second'].to), gs.TweenMax.to(__tweens['screen-tablet-second'].target, __tweens['screen-tablet-second'].duration, __tweens['screen-tablet-second'].to), gs.TweenMax.to(__tweens['screen-smartphone-second'].target, __tweens['screen-smartphone-second'].duration, __tweens['screen-smartphone-second'].to)]).append(gs.TweenMax.to(__tweens['text-1-first-line-from-right-second'].target, __tweens['text-1-first-line-from-right-second'].duration, __tweens['text-1-first-line-from-right-second'].to)).append(gs.TweenMax.to(__tweens['text-1-second-line-from-right-second'].target, __tweens['text-1-second-line-from-right-second'].duration, __tweens['text-1-second-line-from-right-second'].to)).append(gs.TweenMax.to(__tweens['text-1-third-line-from-right-second'].target, __tweens['text-1-third-line-from-right-second'].duration, __tweens['text-1-third-line-from-right-second'].to)).append(gs.TweenMax.to(__tweens['screen-laptop-third'].target, __tweens['screen-laptop-third'].duration, __tweens['screen-laptop-third'].to)).appendMultiple([gs.TweenMax.to(__tweens['text-1-first-line-from-right-third'].target, __tweens['text-1-first-line-from-right-third'].duration, __tweens['text-1-first-line-from-right-third'].to), gs.TweenMax.to(__tweens['text-1-second-line-from-right-third'].target, __tweens['text-1-second-line-from-right-third'].duration, __tweens['text-1-second-line-from-right-third'].to), gs.TweenMax.to(__tweens['text-1-third-line-from-right-third'].target, __tweens['text-1-third-line-from-right-third'].duration, __tweens['text-1-third-line-from-right-third'].to)]).append(gs.TweenMax.to(__tweens['screen-laptop-2-second'].target, __tweens['screen-laptop-2-second'].duration, __tweens['screen-laptop-2-second'].to)).append(gs.TweenMax.to(__tweens['table-first-second'].target, __tweens['table-first-second'].duration, __tweens['table-first-second'].to)).append(gs.TweenMax.to(__tweens['table-second-second'].target, __tweens['table-second-second'].duration, __tweens['table-second-second'].to)).append(gs.TweenMax.to(__tweens['table-third-second'].target, __tweens['table-third-second'].duration, __tweens['table-third-second'].to)).append(gs.TweenMax.staggerTo(__tweens['horizontal-points-second'].target, __tweens['horizontal-points-second'].duration, __tweens['horizontal-points-second'].to, 0.03)).append(gs.TweenMax.staggerTo(__tweens['table-first-points-second'].target, __tweens['table-first-points-second'].duration, __tweens['table-first-points-second'].to, 0.03)).append(gs.TweenMax.staggerTo(__tweens['table-second-points-second'].target, __tweens['table-second-points-second'].duration, __tweens['table-second-points-second'].to, 0.03)).append(gs.TweenMax.staggerTo(__tweens['table-third-points-second'].target, __tweens['table-third-points-second'].duration, __tweens['table-third-points-second'].to, 0.03)).appendMultiple([gs.TweenMax.to(__tweens['app-first-second'].target, __tweens['app-first-second'].duration, __tweens['app-first-second'].to), gs.TweenMax.to(__tweens['app-second-second'].target, __tweens['app-second-second'].duration, __tweens['app-second-second'].to), gs.TweenMax.to(__tweens['app-third-second'].target, __tweens['app-third-second'].duration, __tweens['app-third-second'].to)]).append(gs.TweenMax.to(__tweens['silhouettes-first-second'].target, __tweens['silhouettes-first-second'].duration, __tweens['silhouettes-first-second'].to)).append(gs.TweenMax.to(__tweens['silhouettes-second-second'].target, __tweens['silhouettes-second-second'].duration, __tweens['silhouettes-second-second'].to)).append(gs.TweenMax.to(__tweens['silhouettes-third-second'].target, __tweens['silhouettes-third-second'].duration, __tweens['silhouettes-third-second'].to)).append(gs.TweenMax.to(__tweens['text-3-first-line-from-right-second'].target, __tweens['text-3-first-line-from-right-second'].duration, __tweens['text-3-first-line-from-right-second'].to)).append(gs.TweenMax.to(__tweens['text-3-second-line-from-right-second'].target, __tweens['text-3-second-line-from-right-second'].duration, __tweens['text-3-second-line-from-right-second'].to)).append(gs.TweenMax.to(__tweens['text-3-third-line-from-right-second'].target, __tweens['text-3-third-line-from-right-second'].duration, __tweens['text-3-third-line-from-right-second'].to)).appendMultiple([__appTimeline, gs.TweenMax.to(__tweens['screen-laptop-2-third'].target, __tweens['screen-laptop-2-third'].duration, __tweens['screen-laptop-2-third'].to), gs.TweenMax.to(__tweens['screen-laptop-graph-second'].target, __tweens['screen-laptop-graph-second'].duration, __tweens['screen-laptop-graph-second'].to)]);
   offsetTop = $('#animation-wrapper').offset().top;
   $(window).on('scroll', function(e) {
     if ($(this).scrollTop() >= offsetTop) {
+      $(this).trigger('resize');
       return __timeline.play();
     }
   });
@@ -945,6 +783,7 @@ $(function() {
   return $('#animation-play-button').on('click', function(e) {
     e.preventDefault();
     $('#animation-play-overlay').removeClass('active');
+    $(this).trigger('resize');
     return __timeline.restart();
   });
-});
+})(window.jQuery);
