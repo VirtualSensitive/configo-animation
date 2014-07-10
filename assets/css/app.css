@@ -9,7 +9,7 @@ html body {
 html body #animation-wrapper {
   position: relative;
   width: 100%;
-  height: 100%;
+  height: auto;
   background: #3da3dc;
 }
 html body #animation-wrapper .animation-navigator {
@@ -26,15 +26,14 @@ html body #animation-wrapper .animation-navigator {
   -moz-transition: opacity 0.4s ease-out;
   transition: opacity 0.4s ease-out;
   opacity: 1;
-}
-html body #animation-wrapper .animation-navigator#previous-slide {
-  left: 10px;
+  visibility: visible;
 }
 html body #animation-wrapper .animation-navigator#next-slide {
   right: 10px;
 }
 html body #animation-wrapper .animation-navigator.unvisible {
   opacity: 0;
+  visibility: hidden;
 }
 html body #animation-wrapper #animation-container {
   position: relative;
@@ -234,7 +233,7 @@ html body #animation-wrapper #animation-container #animation-points #animation-p
 html body #animation-wrapper #animation-container #animation-points #animation-points-table-3 {
   position: absolute;
   top: 0;
-  width: 8px;
+  width: 9px;
   height: 100%;
 }
 html body #animation-wrapper #animation-container #animation-points #animation-points-table-1 {

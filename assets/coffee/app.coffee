@@ -339,21 +339,21 @@ $ ->
             'target': __elements['laptop']
             'duration': 0
             'to': {
-                'scale': 0.3
+                'scale': 0
             }
         }
         'tablet-first': {
             'target': __elements['tablet']
             'duration': 0
             'to': {
-                'scale': 0.3
+                'scale': 0
             }
         }
         'smartphone-first': {
             'target': __elements['smartphone']
             'duration': 0
             'to': {
-                'scale': 0.3
+                'scale': 0
             }
         }
         'laptop-second': {
@@ -748,6 +748,169 @@ $ ->
                 'alpha': 1
             }
         }
+        'screen-laptop-graph-third': {
+            'target': __elements['screen-laptop-graph']
+            'duration': 0.6
+            'to': {
+                'alpha': 0
+            }
+        }
+        'screen-tablet-third': {
+            'target': __elements['screen-tablet']
+            'duration': 0.6
+            'to': {
+                'alpha': 0
+            }
+        }
+        'screen-smartphone-third': {
+            'target': __elements['screen-smartphone']
+            'duration': 0.6
+            'to': {
+                'alpha': 0
+            }
+        }
+        'text-3-first-line-from-right-third': {
+            'target': __elements['text-3-first-line']
+            'duration': 0.4
+            'to': {
+                'x': __elements['text-3-first-line'].width() + windowWidth
+                'y': __positions['text-3-first-line'].y * height
+            }
+        }
+        'text-3-second-line-from-right-third': {
+            'target': __elements['text-3-second-line']
+            'duration': 0.4
+            'to': {
+                'x': __elements['text-3-second-line'].width() + windowWidth
+                'y': __positions['text-3-second-line'].y * height
+            }
+        }
+        'text-3-third-line-from-right-third': {
+            'target': __elements['text-3-third-line']
+            'duration': 0.4
+            'to': {
+                'x': __elements['text-3-third-line'].width() + windowWidth
+                'y': __positions['text-3-third-line'].y * height
+            }
+        }
+        'silhouettes-first-third': {
+            'target': __elements['silhouettes-first']
+            'duration': 0.4
+            'to': {
+                'x': __positions['silhouettes-first'].x * width + windowWidth
+                'y': __positions['silhouettes-first'].y * height
+            }
+        }
+        'silhouettes-second-third': {
+            'target': __elements['silhouettes-second']
+            'duration': 0.4
+            'to': {
+                'x': __positions['silhouettes-second'].x * width + windowWidth
+                'y': __positions['silhouettes-second'].y * height
+            }
+        }
+        'silhouettes-third-third': {
+            'target': __elements['silhouettes-third']
+            'duration': 0.4
+            'to': {
+                'x': __positions['silhouettes-third'].x * width + windowWidth
+                'y': __positions['silhouettes-third'].y * height
+            }
+        }
+        'horizontal-points-third': {
+            'target': __elements['horizontal-points']
+            'duration': 0.1
+            'to': {
+                'scale': 0
+            }
+        }
+        'table-first-points-third': {
+            'target': __elements['table-first-points']
+            'duration': 0.3
+            'to': {
+                'scale': 0
+            }
+        }
+        'table-second-points-third': {
+            'target': __elements['table-second-points']
+            'duration': 0.3
+            'to': {
+                'scale': 0
+            }
+        }
+        'table-third-points-third': {
+            'target': __elements['table-third-points']
+            'duration': 0.3
+            'to': {
+                'scale': 0
+            }
+        }
+        'app-first-sixth': {
+            'target': __elements['app-first']
+            'duration': 0.6
+            'to': {
+                'scale': 0
+            }
+        }
+        'app-second-sixth': {
+            'target': __elements['app-second']
+            'duration': 0.6
+            'to': {
+                'scale': 0
+            }
+        }
+        'app-third-sixth': {
+            'target': __elements['app-third']
+            'duration': 0.6
+            'to': {
+                'scale': 0
+            }
+        }
+        'table-first-third': {
+            'target': __elements['table-first']
+            'duration': 0.4
+            'to': {
+                'scale': 0
+                'alpha': 0
+            }
+        }
+        'table-second-third': {
+            'target': __elements['table-second']
+            'duration': 0.4
+            'to': {
+                'scale': 0
+                'alpha': 0
+            }
+        }
+        'table-third-third': {
+            'target': __elements['table-third']
+            'duration': 0.4
+            'to': {
+                'scale': 0
+                'alpha': 0
+            }
+        }
+        'laptop-third': {
+            'target': __elements['laptop']
+            'duration': 0.6
+            'to': {
+                'scale': 0
+            }
+        }
+        'tablet-third': {
+            'target': __elements['tablet']
+            'duration': 0.6
+            'to': {
+                'scale': 0
+            }
+        }
+        'smartphone-third': {
+            'target': __elements['smartphone']
+            'duration': 0.6
+            'to': {
+                'scale': 0
+            }
+        }
     }
 
     __appFirstRotationTimeline = new TimelineMax {
@@ -797,16 +960,16 @@ $ ->
             TweenMax.staggerTo __tweens['app-third-points-second'].target, __tweens['app-third-points-second'].duration, __tweens['app-third-points-second'].to, 0.1
         ]
         .addCallback () ->
-            console.log 'appTimeline ended', @
+            console.log 'end'
             __displayNavigators()
-            @.removeCallback null, null
+            @._timeline.removeCallback (e) ->
+                console.log e
+            , null
         , '+=0'
 
     $('.animation-navigator').on 'click', (e) ->
         e.preventDefault()
-        if $(@).data('slide') == 'previous'
-            __playPreviousLabel()
-        else
+        if $(@).data('slide') == 'next'
             __playNextLabel()
 
     __animationHasStarted = false
@@ -815,28 +978,24 @@ $ ->
         $('.animation-navigator').removeClass 'unvisible'
     __hideNavigators = () ->
         $('.animation-navigator').addClass 'unvisible'
-    __playPreviousLabel = () ->
-        __hideNavigators()
-        __label--
-        previousLabel = 'Slide-' + (__label)
-        if __label == 0
-            __label = 3
-        console.log previousLabel
-        __timeline.tweenTo previousLabel
     __playNextLabel = () ->
         __hideNavigators()
         __label++
         nextLabel = 'Slide-' + (__label)
-        if __label == 3
+        console.log __label, nextLabel
+        if __label == 4
+            __appTimeline.stop()
+            __timeline.tweenFromTo 'Slide-3', 'Slide-4'
             __label = 0
-        console.log nextLabel
         __timeline.tweenTo nextLabel
     __timeline = new TimelineMax {
         'repeat': 0,
         'paused': true
         'repeatDelay': 1
+        'yoyo': false
     }
     __timeline
+        .timeScale 5
         .addLabel 'Slide-0'
         .addCallback () ->
             console.log '0'
@@ -873,7 +1032,7 @@ $ ->
             TweenMax.to __tweens['text-3-third-line-from-right-first'].target, __tweens['text-3-third-line-from-right-first'].duration, __tweens['text-3-third-line-from-right-first'].to
         ]
         .appendMultiple [
-            TweenMax.to __tweens['laptop-first'].target, __tweens['laptop-first'].duration, __tweens['laptop-first'].to, __tweens['laptop-first']
+            TweenMax.to __tweens['laptop-first'].target, __tweens['laptop-first'].duration, __tweens['laptop-first'].to
             TweenMax.to __tweens['tablet-first'].target, __tweens['tablet-first'].duration, __tweens['tablet-first'].to
             TweenMax.to __tweens['smartphone-first'].target, __tweens['smartphone-first'].duration, __tweens['smartphone-first'].to
         ]
@@ -918,6 +1077,7 @@ $ ->
         .addCallback () ->
             console.log '2'
             __displayNavigators.apply @
+            __appTimeline.restart()
         , 'Slide-2'
         .append TweenMax.to __tweens['silhouettes-first-second'].target, __tweens['silhouettes-first-second'].duration, __tweens['silhouettes-first-second'].to
         .append TweenMax.to __tweens['silhouettes-second-second'].target, __tweens['silhouettes-second-second'].duration, __tweens['silhouettes-second-second'].to
@@ -931,12 +1091,41 @@ $ ->
             TweenMax.to __tweens['screen-laptop-graph-second'].target, __tweens['screen-laptop-graph-second'].duration, __tweens['screen-laptop-graph-second'].to
         ]
         .addLabel 'Slide-3'
+        .append TweenMax.to __tweens['text-3-first-line-from-right-third'].target, __tweens['text-3-first-line-from-right-third'].duration, __tweens['text-3-first-line-from-right-third'].to
+        .append TweenMax.to __tweens['text-3-second-line-from-right-third'].target, __tweens['text-3-second-line-from-right-third'].duration, __tweens['text-3-second-line-from-right-third'].to
+        .append TweenMax.to __tweens['text-3-third-line-from-right-third'].target, __tweens['text-3-third-line-from-right-third'].duration, __tweens['text-3-third-line-from-right-third'].to
+        .appendMultiple [
+            TweenMax.to __tweens['screen-laptop-graph-third'].target, __tweens['screen-laptop-graph-third'].duration, __tweens['screen-laptop-graph-third'].to
+            TweenMax.to __tweens['screen-tablet-third'].target, __tweens['screen-tablet-third'].duration, __tweens['screen-tablet-third'].to
+            TweenMax.to __tweens['screen-smartphone-third'].target, __tweens['screen-smartphone-third'].duration, __tweens['screen-smartphone-third'].to
+        ]
+        .append TweenMax.to __tweens['silhouettes-first-third'].target, __tweens['silhouettes-first-third'].duration, __tweens['silhouettes-first-third'].to
+        .append TweenMax.to __tweens['silhouettes-second-third'].target, __tweens['silhouettes-second-third'].duration, __tweens['silhouettes-second-third'].to
+        .append TweenMax.to __tweens['silhouettes-third-third'].target, __tweens['silhouettes-third-third'].duration, __tweens['silhouettes-third-third'].to
+        .append TweenMax.staggerTo __tweens['horizontal-points-third'].target, __tweens['horizontal-points-third'].duration, __tweens['horizontal-points-third'].to, 0.03
+        .append TweenMax.staggerTo __tweens['table-first-points-third'].target, __tweens['table-first-points-third'].duration, __tweens['table-first-points-third'].to, 0.03
+        .append TweenMax.staggerTo __tweens['table-second-points-third'].target, __tweens['table-second-points-third'].duration, __tweens['table-second-points-third'].to, 0.03
+        .append TweenMax.staggerTo __tweens['table-third-points-third'].target, __tweens['table-third-points-third'].duration, __tweens['table-third-points-third'].to, 0.03
+        .append TweenMax.to __tweens['table-first-third'].target, __tweens['table-first-third'].duration, __tweens['table-first-third'].to
+        .append TweenMax.to __tweens['table-second-third'].target, __tweens['table-second-third'].duration, __tweens['table-second-third'].to
+        .append TweenMax.to __tweens['table-third-third'].target, __tweens['table-third-third'].duration, __tweens['table-third-third'].to
+        .appendMultiple [
+            TweenMax.to __tweens['app-first-sixth'].target, __tweens['app-first-sixth'].duration, __tweens['app-first-sixth'].to
+            TweenMax.to __tweens['app-second-sixth'].target, __tweens['app-second-sixth'].duration, __tweens['app-second-sixth'].to
+            TweenMax.to __tweens['app-third-sixth'].target, __tweens['app-third-sixth'].duration, __tweens['app-third-sixth'].to
+        ]
+        .appendMultiple [
+            TweenMax.to __tweens['laptop-third'].target, __tweens['laptop-third'].duration, __tweens['laptop-third'].to
+            TweenMax.to __tweens['tablet-third'].target, __tweens['tablet-third'].duration, __tweens['tablet-third'].to
+            TweenMax.to __tweens['smartphone-third'].target, __tweens['smartphone-third'].duration, __tweens['smartphone-third'].to
+        ]
+        .addLabel 'Slide-4'
         .addCallback () ->
-            console.log '3'
-            __displayNavigators.apply @
-        , 'Slide-3'
+            console.log 'Slide-4 Reached'
+            __timeline.gotoAndPlay 'Slide-0'
+
+            # __displayNavigators.apply @
+        , 'Slide-4'
     console.log 'Slide-' + __label
-    # __timeline.tweenFromTo 'Slide-' + __label, 'Slide-' + (__label + 1)
     __timeline.tweenTo 'Slide-' + __label
-    # __timeline.play()
 
