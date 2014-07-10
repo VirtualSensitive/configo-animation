@@ -941,7 +941,7 @@ $ ->
         .append TweenMax.to __tweens['app-third-fifth'].target, __tweens['app-third-fifth'].duration, __tweens['app-third-fifth'].to
 
     __appTimeline = new TimelineMax {
-        'repeat': -1
+        'repeat': 1
     }
     __appTimeline
         .append __appFirstRotationTimeline
@@ -959,51 +959,15 @@ $ ->
             TweenMax.staggerTo __tweens['app-third-points-first'].target, __tweens['app-third-points-first'].duration, __tweens['app-third-points-first'].to, 0.1
             TweenMax.staggerTo __tweens['app-third-points-second'].target, __tweens['app-third-points-second'].duration, __tweens['app-third-points-second'].to, 0.1
         ]
-        .addCallback () ->
-            console.log 'end'
-            __displayNavigators()
-            @._timeline.removeCallback (e) ->
-                console.log e
-            , null
-        , '+=0'
 
-    $('.animation-navigator').on 'click', (e) ->
-        e.preventDefault()
-        if $(@).data('slide') == 'next'
-            __playNextLabel()
-
-    __animationHasStarted = false
     __label = 1
-    __displayNavigators = () ->
-        $('.animation-navigator').removeClass 'unvisible'
-    __hideNavigators = () ->
-        $('.animation-navigator').addClass 'unvisible'
-    __playNextLabel = () ->
-        __hideNavigators()
-        __label++
-        nextLabel = 'Slide-' + (__label)
-        console.log __label, nextLabel
-        if __label == 4
-            __appTimeline.stop()
-            __timeline.tweenFromTo 'Slide-3', 'Slide-4'
-            __label = 0
-        __timeline.tweenTo nextLabel
     __timeline = new TimelineMax {
-        'repeat': 0,
+        'repeat': 0
         'paused': true
-        'repeatDelay': 1
         'yoyo': false
     }
     __timeline
-        .timeScale 5
-        .addLabel 'Slide-0'
-        .addCallback () ->
-            console.log '0'
-            if __animationHasStarted
-                __displayNavigators.apply @
-            else
-                __animationHasStarted = true
-        , 'Slide-0'
+        .timeScale 1
         .appendMultiple [
             TweenMax.to __tweens['screen-laptop-first'].target, __tweens['screen-laptop-first'].duration, __tweens['screen-laptop-first'].to
             TweenMax.to __tweens['screen-laptop-2-first'].target, __tweens['screen-laptop-2-first'].duration, __tweens['screen-laptop-2-first'].to
@@ -1049,11 +1013,6 @@ $ ->
         .append TweenMax.to __tweens['text-1-first-line-from-right-second'].target, __tweens['text-1-first-line-from-right-second'].duration, __tweens['text-1-first-line-from-right-second'].to
         .append TweenMax.to __tweens['text-1-second-line-from-right-second'].target, __tweens['text-1-second-line-from-right-second'].duration, __tweens['text-1-second-line-from-right-second'].to
         .append TweenMax.to __tweens['text-1-third-line-from-right-second'].target, __tweens['text-1-third-line-from-right-second'].duration, __tweens['text-1-third-line-from-right-second'].to
-        .addLabel 'Slide-1'
-        .addCallback () ->
-            console.log '1'
-            __displayNavigators.apply @
-        , 'Slide-1'
         .append TweenMax.to __tweens['screen-laptop-third'].target, __tweens['screen-laptop-third'].duration, __tweens['screen-laptop-third'].to
         .appendMultiple [
             TweenMax.to __tweens['text-1-first-line-from-right-third'].target, __tweens['text-1-first-line-from-right-third'].duration, __tweens['text-1-first-line-from-right-third'].to
@@ -1073,12 +1032,6 @@ $ ->
             TweenMax.to __tweens['app-second-second'].target, __tweens['app-second-second'].duration, __tweens['app-second-second'].to
             TweenMax.to __tweens['app-third-second'].target, __tweens['app-third-second'].duration, __tweens['app-third-second'].to
         ]
-        .addLabel 'Slide-2'
-        .addCallback () ->
-            console.log '2'
-            __displayNavigators.apply @
-            __appTimeline.restart()
-        , 'Slide-2'
         .append TweenMax.to __tweens['silhouettes-first-second'].target, __tweens['silhouettes-first-second'].duration, __tweens['silhouettes-first-second'].to
         .append TweenMax.to __tweens['silhouettes-second-second'].target, __tweens['silhouettes-second-second'].duration, __tweens['silhouettes-second-second'].to
         .append TweenMax.to __tweens['silhouettes-third-second'].target, __tweens['silhouettes-third-second'].duration, __tweens['silhouettes-third-second'].to
@@ -1119,13 +1072,17 @@ $ ->
             TweenMax.to __tweens['tablet-third'].target, __tweens['tablet-third'].duration, __tweens['tablet-third'].to
             TweenMax.to __tweens['smartphone-third'].target, __tweens['smartphone-third'].duration, __tweens['smartphone-third'].to
         ]
-        .addLabel 'Slide-4'
         .addCallback () ->
-            console.log 'Slide-4 Reached'
-            __timeline.gotoAndPlay 'Slide-0'
+            $('#animation-play-overlay').addClass 'active'
+        , '+=0'
 
-            # __displayNavigators.apply @
-        , 'Slide-4'
-    console.log 'Slide-' + __label
-    __timeline.tweenTo 'Slide-' + __label
+    offsetTop = $('#animation-wrapper').offset().top
+    $(window).on 'scroll', (e) ->
+        if $(@).scrollTop() >= offsetTop
+            __timeline.play()
+    $(window).trigger 'scroll'
 
+    $('#animation-play-button').on 'click', (e) ->
+        e.preventDefault()
+        $('#animation-play-overlay').removeClass 'active'
+        __timeline.restart()
